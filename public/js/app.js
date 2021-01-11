@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "js/" + ({}[chunkId]||chunkId) + "." + {"1":"416bfd57a35b61520966","2":"d39ddf6cfd1c245677b8","3":"df0ff15662c75bb9e8d3","4":"3eb25dbc4d0ae1e2686a","5":"740f34908265b5c00658","6":"05008a0aee48ec89400c","7":"356c44195f4125874d3d"}[chunkId] + ".js"
+/******/ 		return __webpack_require__.p + "js/" + ({}[chunkId]||chunkId) + "." + {"0":"1a446b831db1eb101132","1":"9916e42971fbcf45ea8d","2":"fd13174dd8b183e4227d","3":"f955b838d77ced96eac0","4":"b8e6af75e742f172dd71","5":"29584928172ff848a84a"}[chunkId] + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -29732,45 +29732,43 @@ module.exports = function(module) {
 var map = {
 	"./Index": [
 		"./resources/js/Pages/Index.vue",
-		4,
 		1,
 		2,
-		3
+		0,
+		4
 	],
 	"./Index.vue": [
 		"./resources/js/Pages/Index.vue",
-		4,
 		1,
 		2,
-		3
+		0,
+		4
 	],
 	"./MovieInfo": [
 		"./resources/js/Pages/MovieInfo.vue",
-		4,
 		1,
-		7,
 		2,
-		5
+		0,
+		3
 	],
 	"./MovieInfo.vue": [
 		"./resources/js/Pages/MovieInfo.vue",
-		4,
 		1,
-		7,
 		2,
-		5
+		0,
+		3
 	],
 	"./Welcome": [
 		"./resources/js/Pages/Welcome.vue",
-		4,
-		2,
-		6
+		1,
+		0,
+		5
 	],
 	"./Welcome.vue": [
 		"./resources/js/Pages/Welcome.vue",
-		4,
-		2,
-		6
+		1,
+		0,
+		5
 	]
 };
 function webpackAsyncContext(req) {

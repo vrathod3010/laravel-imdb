@@ -3,22 +3,20 @@
         ><div class="movie-info border-b border-gray-700">
             <div
                 :style="heroImageStyle"
-                class="hero-image h-80  shadow-inner"
+                class="hidden lg:block hero-image h-80  shadow-inner "
             ></div>
             <div
-                class="container mx-auto px-4 pt-16 pb-8 items-center md:items-start flex flex-col lg:flex-row"
+                class="container mx-auto px-4 pt-16 pb-8 items-center lg:items-start flex flex-col lg:flex-row"
             >
                 <img
                     :src="
                         `https://image.tmdb.org/t/p/original/${movie.poster_path}`
                     "
                     alt="movie image"
-                    class="w-96 transform -translate-y-40 "
+                    class="w-96 transform lg:-translate-y-40 "
                     width="md:24rem w-64"
                 />
-                <div
-                    class="mt-12 lg:mt-0 lg:ml-24 transform -translate-y-20 md:-translate-y-0"
-                >
+                <div class="mt-12 lg:mt-0 lg:ml-24 transform ">
                     <h2 class="text-4xl font-semibold">{{ movie.title }}</h2>
                     <div class="flex items-center text-gray-300 text-sm mt-1">
                         <svg
@@ -79,6 +77,41 @@
                             Play Trailer
                         </a>
                     </div>
+                    <!-- <div
+                        style="background-color: rgba(0, 0, 0, .5);"
+                        class="fixed top-0 left-0 w-full h-full flex items-center shadow-lg overflow-y-auto"
+                    >
+                        <div
+                            class="container mx-auto lg:px-32 rounded-lg overflow-y-auto"
+                        >
+                            <div class="bg-gray-900 rounded">
+                                <div class="flex justify-end pr-4 pt-2">
+                                    <button
+                                        @click="isOpen = false"
+                                        class="text-3xl leading-none hover:text-gray-300"
+                                    >
+                                        &times;
+                                    </button>
+                                </div>
+                                <div class="modal-body px-8 py-8">
+                                    <div
+                                        class="responsive-container overflow-hidden relative"
+                                        style="padding-top: 56.25%"
+                                    >
+                                        <iframe
+                                            class="responsive-iframe absolute top-0 left-0 w-full h-full"
+                                            :src="
+                                                `https://www.youtube.com/embed/${movie.videos.results[0].key}`
+                                            "
+                                            style="border:0;"
+                                            allow="autoplay; encrypted-media"
+                                            allowfullscreen
+                                        ></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -116,6 +149,7 @@
                         class="mt-8"
                     >
                         <img
+                            loading="lazy"
                             data-zoomable
                             :src="
                                 `https://image.tmdb.org/t/p/original/${img.file_path}`
@@ -148,12 +182,20 @@ export default {
     },
     computed: {
         heroImageStyle() {
-            return (
-                'background-image: url("' +
-                "https://image.tmdb.org/t/p/original/" +
-                this.movie.images.backdrops[0].file_path +
-                '");'
-            );
+            Array.prototype.sample = function() {
+                return this[Math.floor(Math.random() * this.length)];
+            };
+
+            if (this.movie.images.backdrops.length > 0) {
+                return (
+                    'background: url("' +
+                    "https://image.tmdb.org/t/p/original/" +
+                    this.movie.images.backdrops.sample().file_path +
+                    '");'
+                );
+            } else {
+                return "background: black";
+            }
         },
         genresString() {
             let result = "";
@@ -190,7 +232,8 @@ export default {
 <style scoped>
 .hero-image {
     background-attachment: fixed;
-    background-position: center;
+    background-position-x: center;
+    background-position-y: center;
     background-repeat: no-repeat;
     background-size: cover;
 }

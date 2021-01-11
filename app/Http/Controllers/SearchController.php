@@ -10,9 +10,9 @@ class SearchController extends Controller
     public function index(Request $request)
     {
         if ($request->filled('query') && strlen($request->get('query')) > 2) {
-            return Http::withToken(config('services.tmdb.token'))
+            return collect(Http::withToken(config('services.tmdb.token'))
                 ->get('https://api.themoviedb.org/3/search/movie?query=' . $request->get('query'))
-                ->json()['results'];
+                ->json()['results'])->take(7);
         }
         return collect([]);
     }
